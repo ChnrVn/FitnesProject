@@ -21,9 +21,6 @@ public class MainController {
     private static final String ID_PATH_VAR = "id";
     private static final String SORT_COL_NUM_PATH_VAR = "col_name";
 
-    record keyExtractorAndComparator(Function<FitnessMembership, Comparable> f, Comparator comp){
-
-    }
     private static final Map<String, Function<FitnessMembership, Comparable>> fieldNameToExtractor
             = Map.of("name", FitnessMembership::getName,
             "phone", FitnessMembership::getPhone,
