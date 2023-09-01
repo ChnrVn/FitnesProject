@@ -2,7 +2,6 @@ package com.example.fitnesproject.controllers;
 
 import com.example.fitnesproject.domain.FitnessMembershipUserInfo;
 import com.example.fitnesproject.services.FitnessMembershipService;
-import com.example.fitnesproject.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/newMemberShip")
 public class AddMembershipController {
     private static final String NEW_MEMBERSHIP_ATTR = "new_membership";
+
     private final FitnessMembershipService fitnessMembershipService;
     @Autowired
     public AddMembershipController(FitnessMembershipService fitnessMembershipService) {
@@ -25,13 +25,14 @@ public class AddMembershipController {
     public String createNewMembershipPage(Model model){
         model.addAttribute(NEW_MEMBERSHIP_ATTR,
                 new FitnessMembershipUserInfo());
-
-        return "createMemberShipPage";
+        return "new";
     }
 
     @PostMapping
     public String saveNewMembershipAndReturnMainPage(@ModelAttribute(NEW_MEMBERSHIP_ATTR)
                                                      FitnessMembershipUserInfo newFitMem){
+
+        System.out.println(newFitMem);
         fitnessMembershipService
                 .addFitnessMembership(newFitMem);
         return "redirect:/";

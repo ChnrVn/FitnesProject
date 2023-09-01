@@ -26,7 +26,9 @@ public class FitnessMembershipService {
 
     public void addFitnessMembership(FitnessMembershipUserInfo userInfo){
         fitnessMembershipRepo.save(FitnessMembership.builder()
-                .name(userInfo.getName())
+                .name(
+                        formatName(userInfo.getName())
+                )
                 .phone(userInfo.getPhone())
                 .mail(userInfo.getMail())
                 .abonimentBoughtDate(LocalDate.now())
@@ -41,6 +43,12 @@ public class FitnessMembershipService {
                 )
                 .payedSum(userInfo.getPayedSum())
                 .build());
+    }
+
+    private String formatName(String unformatted){
+        return unformatted.length() > 0 ?
+                unformatted.substring(0,1).toUpperCase() + unformatted.substring(1)
+                : unformatted;
     }
 
     public List<FitnessMembership> getAll(){
@@ -61,5 +69,15 @@ public class FitnessMembershipService {
 
     public void save(FitnessMembership editedMembership){
         fitnessMembershipRepo.save(editedMembership);
+    }
+
+    public void copyEdited(FitnessMembership from, FitnessMembership to){
+        to.setName(from.getName());
+        to.setPhone(from.getPhone());
+        to.setMail(from.getMail());
+        to.setTrainsLeft(from.getTrainsLeft());
+        to.setOption(from.getOption());
+        to.setCost(from.getCost());
+        to.setPayedSum(from.getPayedSum());
     }
 }

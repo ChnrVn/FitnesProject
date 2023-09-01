@@ -14,6 +14,9 @@
     <form action="#" th:action="@{/registration}" th:object="${new_user}" method="post">
     <h2>Регистрация</h2>
     <div class="input-box">
+      <div class = "login">
+        <span th:if="${has_already_reg}">User with such login already registered!</span>
+      </div>
       <ion-icon name="person-outline"></ion-icon>
       <label> Введите логин: </label>
       <input class = "input" type="text" th:field="*{userName}" required placeholder="Введите логин..."/>
@@ -25,11 +28,15 @@
     </div>
     <div class="input-box">
       <ion-icon name="body-outline"></ion-icon>
-      <label> Введите роль (ADMIN, USER): </label>
-      <input class = "input" type="text" th:field="*{userRole}" required placeholder="Введите роль..."/>
+      <label> Роль: </label>
+      <select name="role" id="role" th:field="*{userRole}" required>
+        <option value="USER">-- Выберите роль --</option>
+        <option value="ADMIN">ADMIN</option>
+        <option value="USER">USER</option>
+      </select>
     </div>
     <div class="button">
-      <input type="submit" class="btn" value="Войти"/> 
+      <input type="submit" class="btn" value="Войти"/>
     </div>
 </form>
 </div>

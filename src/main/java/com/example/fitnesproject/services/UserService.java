@@ -17,16 +17,22 @@ public class UserService {
         this.users = users;
     }
 
-    public void addUser(Users new_user) {
-        UserDetails userDetails = User.builder()
-                .username(new_user.getUserName())
-                .password("{noop}" + new_user.getPassword())
-                .authorities(
-                        new_user.getUserRole().getDbString()
-                )
-                .build();
+    public boolean addUser(Users new_user) {
+        if (!users.userExists(new_user.getUserName())) {
 
-        //System.out.println(userDetails);
-        users.createUser(userDetails);
+            UserDetails userDetails = User.builder()
+                    .username(new_user.getUserName())
+                    .password("{noop}" + new_user.getPassword())
+                    .authorities(
+                            new_user.getUserRole().getDbString()
+                    )
+                    .build();
+
+            //System.out.println(userDetails);
+            users.createUser(userDetails);
+
+            return true;
+        }
+        return false;
     }
 }

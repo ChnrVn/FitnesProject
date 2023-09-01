@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/registration")
 public class RegistrationController {
     private static final String NEW_USER_ATTR = "new_user";
+    private static final String USER_ALREADY_REG_ATTR = "has_already_reg";
     private final UserService userService;
     @Autowired
     public RegistrationController(UserService userService) {
@@ -22,13 +23,20 @@ public class RegistrationController {
     @GetMapping
     public String registration(Model model){
         model.addAttribute(NEW_USER_ATTR, new Users());
-        //System.out.println(model.getAttribute("user"));
+        model.addAttribute(USER_ALREADY_REG_ATTR, false);
+
         return "registration";
     }
 
     @PostMapping
-    public String addUser(@ModelAttribute(NEW_USER_ATTR) Users users) {
-        userService.addUser(users);
-        return "redirect:/login";
+    public String addUser(Model model,
+                          @ModelAttribute(NEW_USER_ATTR) Users users) {
+        if (userService.addUser(users)){
+            model.addAttribute(USER_ALREADY_REG_ATTR, false);
+            return "redirect:/login";
+        } else {
+            model.addAttribute(USER_ALREADY_REG_ATTR, true);
+            return "registration";
+        }
     }
 }

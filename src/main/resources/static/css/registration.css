@@ -59,13 +59,12 @@ body{
 }
 .form h2{
     font-family: "Bebas Neue Cyrillic";
-    font-size: large;
     letter-spacing: 6px;
     color: #ffffff;
     text-align: center;
     font-size: 30px;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 .form .input-box{
@@ -114,12 +113,38 @@ input.input:hover {
     border: none;
     font-size: 18px;
     cursor: pointer;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
 
 .btn:hover {
     background: #c15134;
     transition: .3s linear;
+}
+
+select {
+    font-family: "Museo Sans Cyrl W03 300";
+    letter-spacing: 1px;
+    height: 40px;
+    color: #ffffff;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 310px;
+    color: #25272d;
+    border: #31353D solid 3px;
+    border-radius: 5px;
+}
+
+.login {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: "Bebas Neue Regular";
+    letter-spacing: 3px;
+    color: red;
+    font-size: 18px;
+    margin: 5px auto;
 }
 

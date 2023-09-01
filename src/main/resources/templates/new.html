@@ -12,45 +12,45 @@
     <div>
         <blockquote><h1>Добавление абонемента</h1></blockquote>
             <div class="row">
-                <form action="#" th:action="@{/save}" th:object="${cargo}" method="post">
+                <form action="#" th:action="@{/newMemberShip}" th:object="${new_membership}" method="post">
                     <table>
-                        <tr>
+                        <!--tr>
                             <td>ID:</td>
                             <td><input class = "input-form" type="number" min="1" step="1" th:field="*{id}"></td>
-                        </tr>
+                        </tr-->
                         <tr>
                             <td>ФИО:</td>
                             <td><input class = "input-form" type="text" th:field="*{name}" required></td>
                         </tr>
                         <tr>
                             <td>Телефон:</td>
-                            <td><input class = "input-form" type="number" th:field="*{content}" required></td>
+                            <td><input class = "input-form" type="number" th:field="*{phone}" required></td>
                         </tr>
                         <tr>
                             <td>Почта:</td>
-                            <td><input class = "input-form" type="text" th:field="*{from_city}" required></td>
+                            <td><input class = "input-form" type="text" th:field="*{mail}" required></td>
                         </tr>
-                        <tr>
+                        <!--tr>
                             <td>Количество оставшихся занятий:</td>
                             <td><input class = "input-form" type="number" th:field="*{date_of_shipping}" required></td>
-                        </tr>
+                        </tr-->
                         <tr>
                             <td>Тариф:</td>
-                            <td><select class = "input-form" name="tarif" id="tarif">
+                            <td><select class = "input-form" name="tarif" id="tarif" th:field="*{option}" required>
                                 <option value="">-- Выберите тариф --</option>
-                                <option value="">Стандартный</option>
-                                <option value="">Продвинутый</option>
-                                <option value="perm">ВИП</option>
+                                <option value="STANDARD">Стандартный</option>
+                                <option value="ADVANCED">Продвинутый</option>
+                                <option value="VIP">ВИП</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <!--tr>
                             <td>Стоимость абонемента:</td>
                             <td><input class = "input-form" type="number" th:field="*{date_of_arrival}" required></td>
-                        </tr>
+                        </tr-->
                         <tr>
                            <td>Внесенная сумма:</td>
-                            <td><input class = "input-form" type="number" th:field="*{date_of_arrival}" required></td>
+                            <td><input class = "input-form" type="number" th:field="*{payedSum}" required></td>
                         </tr>
                     </table>
                     <div class = "button">

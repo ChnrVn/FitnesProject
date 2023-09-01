@@ -17,7 +17,7 @@
                 <table>
                     <tr>
                         <td>ID:</td>
-                        <td><input class = "input-form" type="number" min="1" step="1" th:field="*{id}"></td>
+                        <td><input class = "input-form" type="number" min="1" step="1" th:field="*{id}" required></td>
                     </tr>
                     <tr>
                         <td>ФИО:</td>
@@ -37,11 +37,11 @@
                     </tr>
                     <tr>
                         <td>Тариф:</td>
-                        <td><select class = "input-form" name="tarif" id="tarif" th:field="*{option}">
+                        <td><select class = "input-form" name="tarif" id="tarif" th:field="*{option}" required>
                             <option value="">-- Выберите тариф --</option>
-                            <option value="">Стандартный</option>
-                            <option value="">Продвинутый</option>
-                            <option value="perm">ВИП</option>
+                            <option value="STANDARD">Стандартный</option>
+                            <option value="ADVANCED">Продвинутый</option>
+                            <option value="VIP">ВИП</option>
                             </select>
                         </td>
                     </tr>

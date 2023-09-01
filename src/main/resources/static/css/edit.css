@@ -111,3 +111,14 @@ select {
   background: #c15134;
   transition: .3s linear;
 }
+
+.button span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: "Bebas Neue Regular";
+  letter-spacing: 3px;
+  color: red;
+  font-size: 18px;
+  margin: 20px auto;
+}

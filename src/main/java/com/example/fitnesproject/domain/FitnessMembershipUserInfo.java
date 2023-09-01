@@ -2,6 +2,8 @@ package com.example.fitnesproject.domain;
 
 import lombok.Data;
 
+import java.util.Map;
+
 @Data
 public class FitnessMembershipUserInfo {
     private  String name;
